@@ -1,21 +1,11 @@
 <?php
 
-require_once(__DIR__ . "/app/homeZoo/Cat.php");
-require_once(__DIR__ . "/app/homeZoo/Dog.php");
-require_once(__DIR__ . "/app/homeZoo/Fish.php");
+
 require_once(__DIR__ . "/app/HungryCat/HungryCat.php");
 require_once(__DIR__ . "/app/ToyFactory/ToyFactory.php");
 require_once(__DIR__ . "/app/webstore/User.php");
 
-$firstCat = new App\homeZoo\Cat("Феликс");
-$secondCat = new App\homeZoo\Cat("Барсик");
-$thirdCat = new App\homeZoo\Cat("Пушок");
-$firstDog = new App\homeZoo\Dog("Дружок");
-$secondDog = new App\homeZoo\Dog("Бобик");
-$thirdDog = new App\homeZoo\Dog("Белка");
-$fourthDog = new App\homeZoo\Dog("Стрелка");
-$fifthDog = new App\homeZoo\Dog("Рекс");
-$firstFish = new App\homeZoo\Fish("Буль-буль");
+
 
 $pushok = new App\HungryCat\HungryCat("Пушок", "серый", "Вискас");
 $vaska = new App\HungryCat\HungryCat("Васька", "черный", "Китекат");

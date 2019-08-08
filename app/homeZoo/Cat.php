@@ -1,7 +1,5 @@
 <?php
-
-namespace App\homeZoo;
-
+namespace App\HomeZoo;
 
 class Cat
 {
