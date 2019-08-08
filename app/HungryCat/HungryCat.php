@@ -1,5 +1,4 @@
 <?php
-
 namespace App\HungryCat;
 
 class HungryCat{
@@ -13,8 +12,6 @@ class HungryCat{
 
     public function eat($food)
     {
-
-
             echo "Голодный кот " . $this->name . ", особые приметы: цвет - " . $this->color . ", съел " . $food . "<br />";
 
             if ($food == $this->favoriteFood) {
