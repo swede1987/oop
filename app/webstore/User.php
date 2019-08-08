@@ -17,9 +17,12 @@ class User
         $this->gender=$gender;
         $this->age=$age;
         $this->phone=$phone;
+        $this->notify("Вам нет 18 лет, пожалуйста покиньте сайт<br />");
+        $this->notifyOnEmail("Сообщение на почту");
+        $this->notifyOnPhone("Сообщение на телефон");
     }
 
-    static function send($fio, $chanel, $message)
+    public static function send($fio, $chanel, $message)
     {
         echo "Уведомление клиенту: " . $fio . " на " . $chanel . " : " . $message . "<br />";
     }
@@ -40,23 +43,19 @@ class User
             $fio = $this->fio;
             User::send($fio, $phone, $message);
         }
-
     }
-
-
-
-
-
 
     public function notify($message)
     {
-        if (($this->age == NULL) || ($this->age > 18)) {
-
+        if (($this->age === NULL) || ($this->age < 18)) {
+            User::censor($message);
         }
     }
 
-    public function censor($message)
+    public static function censor($message)
     {
-
+        echo $message;
     }
+    
+    
 }
