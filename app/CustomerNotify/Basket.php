@@ -6,31 +6,32 @@ require_once(__DIR__ . "\Product.php");
 
 class Basket
 {
-    public static function addProduct($product, $quantity, $price)
+    public static function addProduct($product, $quantity, $price, $id)
     {
         $basket = [];
-        $basket[] = array(
+        $basket[$id] = array(
             "NAME" => $product,
             "QNT" => $quantity,
             "PRICE" => $price
         );
 
         self::getPrice($basket);
-//        self::describe($product, $quantity, $price);
+
     }
 
     public function getPrice($basket)
     {
         $totalPriceAr = [];
+
         foreach ($basket as $key => $product) {
             $price = $product["PRICE"];
             $qnt = $product["QNT"];
             $oneProductPrice = $price * $qnt;
-            $totalPriceAr[] = $oneProductPrice;
+            $totalPriceAr[$key] = $oneProductPrice;
         }
-//        var_dump($totalPriceAr[0]);
+
         $totalPrice = array_sum($totalPriceAr);
-        echo $totalPrice;
+        var_dump($totalPrice);
     }
 
     public function describe($product, $quantity, $price)

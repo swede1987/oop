@@ -13,5 +13,5 @@ $fifthProduct = new Product("Пятый товар", "10000");
 $sixthProduct = new Product("Шестой товар", "10000");
 $seventhProduct = new Product("Седьмой товар", "9000");
 
-Basket::addProduct($firstProduct->name, "2", $firstProduct->price);
-Basket::addProduct($thirdProduct->name, "1", $thirdProduct->price);
+Basket::addProduct($firstProduct->name, "2", $firstProduct->price, 1);
+Basket::addProduct($thirdProduct->name, "1", $thirdProduct->price,2);
