@@ -25,7 +25,7 @@ class Basket
             $basket[$key] = $oneProductPrice;
         }
         $total = array_sum($basket);
-        echo $total . " руб.";
+        echo $total . " руб.<br />";
     }
 
     public function describe($basket)

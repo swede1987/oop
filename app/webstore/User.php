@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kolek
- * Date: 25.03.19
- * Time: 21:19
- */
-
 namespace App\Webstore;
 
 class User
@@ -17,9 +10,6 @@ class User
         $this->gender=$gender;
         $this->age=$age;
         $this->phone=$phone;
-        $this->notify("Вам нет 18 лет, пожалуйста покиньте сайт<br />");
-        $this->notifyOnEmail("Сообщение на почту");
-        $this->notifyOnPhone("Сообщение на телефон");
     }
 
     public static function send($fio, $chanel, $message)

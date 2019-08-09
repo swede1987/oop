@@ -3,7 +3,7 @@ namespace App\CustomerNotify;
 
 session_start();
 
-require_once(__DIR__ . "\Order.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "\App\Webstore\User.php");
 require_once(__DIR__ . "\Basket.php");
 require_once(__DIR__ . "\Product.php");
 
@@ -18,5 +18,11 @@ $seventhProduct = new Product("Седьмой товар", "9000");
 
 Basket::addProduct($firstProduct->name, "2", $firstProduct->price, 1);
 Basket::addProduct($thirdProduct->name, "1", $thirdProduct->price,2);
+Basket::addProduct($thirdProduct->name, "1", $thirdProduct->price,3);
 
 $firstOrder = new Order($_SESSION['cart']);
+
+$firstClient = new \App\Webstore\User("Николай Николаевич", "3@ya.ru", NULL, "35", NULL);
+$price = Order::getPrice($_SESSION['cart']);
+$sostav = Order::getBasket($_SESSION['cart']);
+$firstClient->notifyOnEmail("для вас создан заказ, на сумму:" . $price . " Состав:" . $sostav);
