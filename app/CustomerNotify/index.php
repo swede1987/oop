@@ -19,4 +19,4 @@ $seventhProduct = new Product("Седьмой товар", "9000");
 Basket::addProduct($firstProduct->name, "2", $firstProduct->price, 1);
 Basket::addProduct($thirdProduct->name, "1", $thirdProduct->price,2);
 
-var_dump($_SESSION['cart']);
+$firstOrder = new Order($_SESSION['cart']);

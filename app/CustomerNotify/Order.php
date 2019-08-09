@@ -8,17 +8,20 @@ class Order
 {
     public function __construct($basket)
     {
+        echo "Содержимое корзины:<hr />";
+        self::getBasket($basket);
+        echo "<hr>";
+        echo "Общая стоимость заказа: <br />";
         self::getPrice($basket);
-//        self::describe($product, $quantity, $price);
     }
 
-    public function getBasket()
+    public static function getBasket($basket)
     {
-
+        Basket::describe($basket);
     }
 
-    public function getPrice()
+    public static function getPrice($basket)
     {
-
+        Basket::getPrice($basket);
     }
 }

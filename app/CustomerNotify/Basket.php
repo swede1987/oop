@@ -6,37 +6,37 @@ require_once(__DIR__ . "\Product.php");
 
 class Basket
 {
-    public static function addProduct($product, $quantity, $price, $id, $count = 1)
+    public static function addProduct($product, $quantity, $price, $id)
     {
-        $_SESSION['cart'][$id]=$_SESSION['cart'][$id]+$count;
-
-        var_dump($_SESSION['cart']);
-
-//        $_SESSION['cart'][$id]['content'] = array(
-//            "NAME" => $product,
-//            "QNT" => $quantity,
-//            "PRICE" => $price
-//        );
-//
-//        return true;
+        $_SESSION['cart'][$id] = array(
+            "NAME" => $product,
+            "QNT" => $quantity,
+            "PRICE" => $price
+        );
 
     }
-//
-//    public function getPrice($basket)
-//    {
-////        var_dump($basket);
-//        foreach ($basket as $key => $product) {
-//            $price = $product["PRICE"];
-//            $qnt = $product["QNT"];
-//            $oneProductPrice = $price * $qnt;
-//            $basket[$key] = $oneProductPrice;
-//        }
-//        return $basket;
-////        var_dump($basket);
-//    }
-//
-//    public function describe($product, $quantity, $price)
-//    {
-//        echo $product . " — " . $price . " — " . $quantity . "<br />";
-//    }
+
+    public function getPrice($basket)
+    {
+        foreach ($basket as $key => $product) {
+            $price = $product["PRICE"];
+            $qnt = $product["QNT"];
+            $oneProductPrice = $price * $qnt;
+            $basket[$key] = $oneProductPrice;
+        }
+        $total = array_sum($basket);
+        echo $total . " руб.";
+    }
+
+    public function describe($basket)
+    {
+        foreach ($basket as $key => $product) {
+            $price = $product["PRICE"];
+            $quantity = $product["QNT"];
+            $name = $product["NAME"];
+
+        echo $name . " — " . $price . " руб. — " . $quantity . " шт.<br />";
+        }
+
+    }
 }
