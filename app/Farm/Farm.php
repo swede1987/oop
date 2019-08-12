@@ -9,3 +9,23 @@ class Farm
 
     }
 }
+
+class Animals
+{
+
+}
+
+class Pig extends Animals
+{
+
+}
+
+class Cow extends Animals
+{
+
+}
+
+class Chicken extends Animals
+{
+
+}
