@@ -56,10 +56,35 @@ class Chicken extends Animal
     }
 }
 
+class Goose
+{
+
+}
+
+class Turkey
+{
+
+}
+
+class Horse
+{
+
+}
+
+class BirdFarm
+{
+
+}
+
+class Farmer
+{
+
+}
+
 Farm::addAnimal(new Pig);
 Farm::addAnimal(new Cow);
 Farm::addAnimal(new Chicken);
-Farm::addAnimal(new Cow);
+Farm::addAnimal(new Pig);
 
 
 Farm::rollCall();

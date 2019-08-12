@@ -3,6 +3,12 @@ namespace App\Webstore;
 
 class User
 {
+    public $fio;
+    public $email;
+    public $gender;
+    public $age;
+    public $phone;
+
     public function __construct($fio, $email, $gender=null, $age=null, $phone=null)
     {
         $this->fio = $fio;
@@ -12,37 +18,36 @@ class User
         $this->phone=$phone;
     }
 
-    public static function send($fio, $chanel, $message)
+    public function send($chanel, $message)
     {
-        echo "Уведомление клиенту: " . $fio . " на " . $chanel . " : " . $message . "<br />";
+        echo "Уведомление клиенту: " . $this->fio . " на " . $chanel . " : " . $message . "<br />";
     }
 
     public function notifyOnEmail($message)
     {
         $email = "email (" . $this->email . ")";
-        $fio = $this->fio;
-        User::send($fio, $email, $message);
+        $this->send($email, $message);
     }
 
     public function notifyOnPhone($message)
     {
         $phoneUser = $this->phone;
-
-        if ($phoneUser != NULL) {
+        if ($phoneUser != null) {
             $phone = "телефон (" . $this->phone . ")";
-            $fio = $this->fio;
-            User::send($fio, $phone, $message);
+            $this->send($phone, $message);
         }
     }
 
     public function notify($message)
     {
-        if (($this->age === NULL) || ($this->age < 18)) {
-            User::censor($message);
+        if (($this->age === null) || ($this->age < 18)) {
+            $this->censor($message);
         }
+        $this->notifyOnPhone("Сообщение на телефон");
+        $this->notifyOnEmail("Сообщение на почту");
     }
 
-    public static function censor($message)
+    public function censor($message)
     {
         echo $message;
     }
