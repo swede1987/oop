@@ -1,28 +1,15 @@
 <?php
-namespace App\CustomerNotify;
+namespace App\Webstore;
 
-session_start();
+require_once(__DIR__ . "/User.php");
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "\App\Webstore\User.php");
-require_once(__DIR__ . "\Basket.php");
-require_once(__DIR__ . "\Product.php");
+$vasya = new User("Ivanov", "1@ya.ru", null, null, 89093491159);
+$petya = new User("Petrov", "2@ya.ru", null, null, null);
 
-$firstProduct = new Product("Test", "15000");
-$secondProduct = new Product("Второй товар", "10000");
-$thirdProduct = new Product("Третий товар", "11000");
-$fourthProduct = new Product("Четвертый товар", "12000");
-$fifthProduct = new Product("Пятый товар", "10000");
-$sixthProduct = new Product("Шестой товар", "10000");
-$seventhProduct = new Product("Седьмой товар", "9000");
+$vasya->notify("Вам нет 18 лет, пожалуйста покиньте сайт<br />");
+$vasya->notifyOnEmail("Сообщение на почту");
+$vasya->notifyOnPhone("Сообщение на телефон");
 
-
-Basket::addProduct($firstProduct->name, "2", $firstProduct->price, 1);
-Basket::addProduct($thirdProduct->name, "1", $thirdProduct->price,2);
-Basket::addProduct($thirdProduct->name, "1", $thirdProduct->price,3);
-
-$firstOrder = new Order($_SESSION['cart']);
-
-$firstClient = new \App\Webstore\User("Николай Николаевич", "3@ya.ru", NULL, "35", NULL);
-$price = Order::getPrice($_SESSION['cart']);
-$sostav = Order::getBasket($_SESSION['cart']);
-$firstClient->notifyOnEmail("для вас создан заказ, на сумму:" . $price . " Состав:" . $sostav);
+$petya->notify("Вам нет 18 лет, пожалуйста покиньте сайт<br />");
+$petya->notifyOnEmail("Сообщение на почту");
+$petya->notifyOnPhone("Сообщение на телефон");

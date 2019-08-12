@@ -1,7 +1,11 @@
 <?php
 namespace App\HungryCat;
 
-class HungryCat{
+class HungryCat
+{
+    public $name;
+    public $color;
+    public $favoriteFood;
 
     public function __construct($name, $color, $favoriteFood)
     {
@@ -17,7 +21,7 @@ class HungryCat{
             if ($food == $this->favoriteFood) {
                 echo " и замурчал 'мррррр' от своей любимой еды<br />";
             }
-        }
+    }
 
 
 }

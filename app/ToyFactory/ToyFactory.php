@@ -4,6 +4,9 @@ namespace App\ToyFactory;
 
 class Toy
 {
+    public $name;
+    public $price;
+
     public function __construct($name, $price)
     {
         $this->name = $name;
@@ -15,7 +18,6 @@ class ToyFactory
 {
     public function createToy($name)
     {
-        $price = rand(100, 10000);
-        return new Toy($name, $price);
+        return new Toy($name, rand(100, 10000));
     }
 }

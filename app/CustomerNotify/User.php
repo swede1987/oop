@@ -3,7 +3,7 @@ namespace App\Webstore;
 
 class User
 {
-    public function __construct($fio, $email, $gender=NULL, $age=NULL, $phone=NULL)
+    public function __construct($fio, $email, $gender=null, $age=null, $phone=null)
     {
         $this->fio = $fio;
         $this->email = $email;

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\homeZoo;
-
 
 class Fish
 {
