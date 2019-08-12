@@ -2,15 +2,24 @@
 
 class Farm
 {
-    public $animals;
+    public static $animals = [];
 
-    public function addAnimal(Animal $animal)
+    public static function addAnimal(Animal $animal)
     {
+        static::$animals[] = $animal;
+        $animal->walk();
+    }
 
+    public static function rollCall()
+    {
+        foreach (static::$animals as $item) {
+            $rand = rand(0, count(static::$animals) - 1);
+            static::$animals[$rand]->say();
+        }
     }
 }
 
-class Animals
+class Animal
 {
     public function say()
     {
@@ -19,30 +28,38 @@ class Animals
 
     public function walk()
     {
-        echo "Топ-топ";
+        echo "Топ-топ<br/>";
     }
 }
 
-class Pig extends Animals
+class Pig extends Animal
 {
     public function say()
     {
-        echo "Хрю-хрю";
+        echo "Хрю-хрю<br/>";
     }
 }
 
-class Cow extends Animals
+class Cow extends Animal
 {
     public function say()
     {
-        echo "Му-му-му";
+        echo "Му-му-му<br/>";
     }
 }
 
-class Chicken extends Animals
+class Chicken extends Animal
 {
     public function say()
     {
-        echo "Ко-ко-ко";
+        echo "Ко-ко-ко<br/>";
     }
 }
+
+Farm::addAnimal(new Pig);
+Farm::addAnimal(new Cow);
+Farm::addAnimal(new Chicken);
+Farm::addAnimal(new Cow);
+
+
+Farm::rollCall();
