@@ -1,28 +1,25 @@
 <?php
-namespace App\CustomerNotify;
+namespace App\Webstore;
 
 require_once(__DIR__ . "\Basket.php");
 require_once(__DIR__ . "\Product.php");
 
 class Order
 {
-    public $price;
     public $basket;
 
-    public function __construct($basket)
+    public function __construct(Basket $basket)
     {
         $this->basket = $basket;
     }
 
-    public function getBasket()
-    {
-        $basket = $this->basket;
-        $this->basket = $basket->describe();
-    }
-
     public function getPrice()
     {
-        $basket = $this->basket;
-        $this->price = $basket->getPrice();
+        return $this->basket->getPrice();
+    }
+
+    public function getBasket()
+    {
+        return $this->basket->describe();
     }
 }

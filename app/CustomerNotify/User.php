@@ -1,5 +1,5 @@
 <?php
-namespace App\Webstore;
+namespace App\CustomerNotify;
 
 class User
 {
@@ -9,13 +9,13 @@ class User
     public $age;
     public $phone;
 
-    public function __construct($fio, $email, $gender=null, $age=null, $phone=null)
+    public function __construct($fio, $email, $gender = null, $age = null, $phone = null)
     {
         $this->fio = $fio;
         $this->email = $email;
-        $this->gender=$gender;
-        $this->age=$age;
-        $this->phone=$phone;
+        $this->gender = $gender;
+        $this->age = $age;
+        $this->phone = $phone;
     }
 
     public function send($chanel, $message)
@@ -31,11 +31,8 @@ class User
 
     public function notifyOnPhone($message)
     {
-        $phoneUser = $this->phone;
-        if ($phoneUser != null) {
             $phone = "телефон (" . $this->phone . ")";
             $this->send($phone, $message);
-        }
     }
 
     public function notify($message)

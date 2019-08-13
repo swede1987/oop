@@ -1,5 +1,5 @@
 <?php
-namespace App\CustomerNotify;
+namespace App\Webstore;
 
 class Product
 {

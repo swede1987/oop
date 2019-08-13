@@ -1,43 +1,45 @@
 <?php
-namespace App\CustomerNotify;
+namespace App\Webstore;
 
 require_once(__DIR__ . "\Order.php");
 require_once(__DIR__ . "\Product.php");
 
 class Basket
 {
-    public $content;
+    public $content = [];
+    public $qnt = [];
 
     public function addProduct(Product $product, $quantity, $id)
     {
-        $basket[$id]['name'] = $product->getName();
-        $basket[$id]['qnt'] = $quantity;
-        $basket[$id]['price'] = $product->getPrice();
-        $this->content[] = $basket[$id];
+        $this->content[$id] = $product;
+        $this->qnt[$id] = $quantity;
     }
 
     public function getPrice()
     {
         $basket = [];
         foreach ($this->content as $key => $product) {
-            $price = $product["price"];
-            $qnt = $product["qnt"];
+            $price = $product->price;
+            $qnt = $this->qnt[$key];
+
             $oneProductPrice = $price * $qnt;
             $basket[] = $oneProductPrice;
         }
         $total = array_sum($basket);
-        echo $total . " руб.<br />";
+        return $total;
     }
 
     public function describe()
     {
+        $describe = [];
         foreach ($this->content as $key => $product) {
-            $price = $product["price"];
-            $quantity = $product["qnt"];
-            $name = $product["name"];
+            $price = $product->price;
+            $qnt = $this->qnt[$key];
+            $name = $product->name;
 
-        echo $name . " — " . $price . " руб. — " . $quantity . " шт.<br />";
+        $describe[] = $name . " — " . $price . " руб. — " . $qnt . " шт.<br/>";
         }
+        return $describe;
 
     }
 }
